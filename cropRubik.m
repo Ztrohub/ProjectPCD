@@ -1,7 +1,7 @@
 function ff = cropRubik(dir, resize)
     rubik = imread(dir);
     rubik = im2double(rubik);
-
+    
     rubikgray = rgb2gray(rubik);
     rubikgray = fftshift(fft2(rubikgray));
 
@@ -13,8 +13,9 @@ function ff = cropRubik(dir, resize)
 
     filtered = abs(ifft2(fftshift(rubikgray)));
 
-    bw = imbinarize(filtered, 0.2);
+    bw = imbinarize(filtered, 0.18);
     bw = 1 - bw;
+    figure;imshow(bw);
 
     CC = bwconncomp(bw);
     cData = regionprops(CC, 'BoundingBox');
