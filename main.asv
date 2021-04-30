@@ -1,10 +1,5 @@
-size = [180 180];
+size = [90 90];
 img = cropRubik('gambar1.jpg', size);
-
-img = histeq(img);
-% img = img ./ 16;
-% image(img);
-figure;imshow(img);
 
 sizec = round(size / 3);
 img_potongan = zeros(3, 3);
@@ -29,11 +24,11 @@ for i=1:3
         temp(1,1,3) = domB;
         
         hsv = rgb2hsv(temp);
-        hsv(1,1,2) = round(hsv(1,1,2));
-        hsv(1,1,3) = 1;
+        s = size(hsv);
+        
         
         subplot(3, 3, 3*(i-1)+j);
-        imshow(temp);
+        imshow(hsv2rgb(hsv));
 
 %         imshow(imcrop(img, rect));
     end
