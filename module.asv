@@ -1,8 +1,6 @@
 clc; clear; close all;
 
-imshow(cropRubik('gambar1.jpg'));
-
-function ff = cropRubik(dir)
+function f = cropRubik(dir)
     rubik = imread(dir);
     rubik = im2double(rubik);
 
@@ -22,6 +20,8 @@ function ff = cropRubik(dir)
     CC = bwconncomp(bw);
     cData = regionprops(CC, 'BoundingBox');
 
-    ff = imcrop(rubik, cData(1).BoundingBox);
-    ff = imresize(ff, [50, 50]);
+    f = imcrop(rubik, cData(1).BoundingBox);
+    f = imresize(rubik, [50, 50]);
 end
+
+imshow(cropRubik('gambar1.'))
