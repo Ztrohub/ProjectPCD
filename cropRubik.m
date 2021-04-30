@@ -1,8 +1,4 @@
-clc; clear; close all;
-
-imshow(cropRubik('gambar1.jpg'));
-
-function ff = cropRubik(dir)
+function ff = cropRubik(dir, resize)
     rubik = imread(dir);
     rubik = im2double(rubik);
 
@@ -11,7 +7,8 @@ function ff = cropRubik(dir)
 
     [x, y] = size(rubikgray);
     [X, Y] = meshgrid(1:x,1:y);
-    mesh = transpose((X - x/2).^2 + (Y - y/2).^2 < 25600);
+    Min = min(x, y) / 3;
+    mesh = transpose((X - x/2).^2 + (Y - y/2).^2 < Min^2);
     rubikgray = rubikgray .* mesh;
 
     filtered = abs(ifft2(fftshift(rubikgray)));
@@ -23,5 +20,5 @@ function ff = cropRubik(dir)
     cData = regionprops(CC, 'BoundingBox');
 
     ff = imcrop(rubik, cData(1).BoundingBox);
-    ff = imresize(ff, [50, 50]);
+    ff = imresize(ff, resize);
 end
