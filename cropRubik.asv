@@ -8,22 +8,14 @@ function ff = cropRubik(dir, resize)
     cdat = regionprops(imf, 'BoundingBox');
 
     imcr = img.*repmat(imf, [1,1,3]);
+    
     imcr = imcrop(imcr, cdat(1).BoundingBox);
 
-    hsv = rgb2hsv(imcr);
-    hsv(:,:,3) = hsv(:,:,3) > 0.3;
-    hsv(:,:,2) = hsv(:,:,2) > 0.7;
-    imcr = hsv2rgb(hsv);
-    
-    [imnd, map] = rgb2ind(imcr,12,'nodither');
+    [imnd, map] = rgb2ind(imcr,16,'nodither');
     imnd = ind2rgb(imnd, map);
     
-    stl = strel('disk', 8);
-    erodedI = imerode(imnd, stl);
+    se = offsetstrel('ball', 1, 1);
+    erodedI = imerode(imnd, se);
     
-    erodedIgray = rgb2gray(erodedI);
-    edgeI = edge(erodedIgray, 'Canny');
-    
-    ff = erodedI;
-    %ff = imresize(erodedI, resize);
+    ff = imresize(erodedI, resize);
 end
