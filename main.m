@@ -1,7 +1,7 @@
 clear all;
 size = [240 240];
 
-img = cropRubik('referensi.jpg', size);
+img = cropRubik('Gambar/V1/(4).jpg', size);
 figure; imshow(img);
 
 
