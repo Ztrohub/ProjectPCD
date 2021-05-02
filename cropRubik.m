@@ -65,7 +65,7 @@ function ff = cropRubik(img, resize)
     end
     erodedI = hsv2rgb(hsvErodedI);
     
-    stl = strel('disk', 5);
+    stl = strel('square', 8);
     dilatedI = imdilate(erodedI, stl);
     
     ff = imresize(dilatedI, resize);

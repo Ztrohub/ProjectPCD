@@ -22,12 +22,13 @@ function processImage(dir, isOri, isIso, isFinal, panel)
         %collect image
         img = imread(dir);
         croppedImg = cropRubik(img, size);
+        sidebyside = colorValue(croppedImg);
         
         %apply image
         axN = 1;
         if isOri
             if cnt < 3
-                ax = subplot(ceil(cnt)/2, 2, axN, 'Parent', panel);
+                ax = subplot(ceil(cnt/2), 2, axN, 'Parent', panel);
             else
                 ax = subplot(2, ceil(cnt/2), axN, 'Parent', panel);
             end
@@ -38,11 +39,13 @@ function processImage(dir, isOri, isIso, isFinal, panel)
         end
         if isIso
             if cnt < 3
-                ax = subplot(2, ceil(cnt/2), [1, 2], 'Parent', panel);
+                ax = subplot(ceil(cnt/2), 2, axN, 'Parent', panel);
             else
                 ax = subplot(2, ceil(cnt/2), axN, 'Parent', panel);
             end
-            imshow(croppedImg, 'Parent', ax);
+            corners = detectFASTFeatures(rgb2gray(croppedImg));
+            imshow(croppedImg, 'Parent', ax); hold on;
+            plot(selectStrongest(corners, 100), );
             title(ax, 'Isometric Color Segmentation');
             disableDefaultInteractivity(ax);
             axN = axN + 1;
