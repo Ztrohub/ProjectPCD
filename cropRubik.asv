@@ -3,12 +3,24 @@ function ff = cropRubik(dir, resize)
 
     img = imread(dir);
     img = im2double(img);
-    hsv = rgb2hsv(img);
     
-    hsv(:,:,2) = medfilt2(hsv(:,:,2), [10, 10]);
-    imr = hsv(:,:,2) > 0.17 & hsv(:,:,3) > 0.1;
-    stl = strel('disk', 8);
+    hsv = rgb2hsv(img);
+    imgray = abs(hsv(:,:,2) - hsv(:,:,3));
+    lvl = graythresh(imgray);
+    imr = imbinarize(imgray, lvl);
+    stl = strel('disk', 30);
     imr = imerode(imr, stl);
+    imr = imdilate(imr, stl);
+    imr = 1 - imr;
+    
+    
+    CC = bwlabel(imr);
+    [M, F] = mode(CC(:));
+    CC(CC == M) = NaN;
+    [M, F] = mode(CC(:));
+    M
+    ff = imr;
+    
     imf = bwconvhull(imr);
     cdat = regionprops(imf, 'BoundingBox');
     
@@ -51,18 +63,18 @@ function ff = cropRubik(dir, resize)
     for i=1:tempSize(1)
         for j=1:tempSize(2)
             if orangeSelect(i,j) > 0.5 & hsvErodedI(i,j,3) > 0.1
-                hsvErodedI(i,j,1) = 0.08;
+                hsvErodedI(i,j,1) = 0.1;
             end
-            if hsvErodedI(i,j,1) > 0.11 & hsvErodedI(i,j,1) < 0.25
-                hsvErodedI(i,j,2) = hsvErodedI(i,j,2) > 0.3;
-            elseif hsvErodedI(i,j,1) > 0.11 & hsvErodedI(i,j,1) < 0.25
+            if hsvErodedI(i,j,2) < 0.3
+                hsvErodedI(i,j,2) = 0;
+            elseif hsvErodedI(i,j,1) > 0.11 & hsvErodedI(i,j,1) < 0.7
                 hsvErodedI(i,j,2) = 1;
             end
         end
     end
     erodedI = hsv2rgb(hsvErodedI);
     
-    ff = erodedI;
+    %ff = erodedI;
     
     %ff = imresize(erodedI, resize);
 end
