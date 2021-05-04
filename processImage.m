@@ -11,8 +11,8 @@ function processImage(dir, isOri, isIso, isFinal, panel)
     if isFinal
         cnt = cnt + 3;
     end
-    Children=get(panel,'children');
-    h=(findobj(Children,'Type','axes'));
+    Children = get(panel,'children');
+    h = (findobj(Children,'Type','axes'));
     if ~isempty(h)
     for i=1:length(h),delete(h(i));end
     end

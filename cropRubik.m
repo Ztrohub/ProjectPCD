@@ -24,6 +24,7 @@ function ff = cropRubik(img, resize)
     imcr = img.*repmat(imf, [1,1,3]);
     imcr = imcrop(imcr, cdat(1).BoundingBox);
     imcr = imresize(imcr, editSize);
+    %figure;imshow(imcr);
     
     hsv = rgb2hsv(imcr);
     orangeSelect = hsv(:,:,1) > 0.01 & hsv(:,:,1) < 0.1 & hsv(:,:,2) > 0.4 & hsv(:,:,3) > 0.4;
