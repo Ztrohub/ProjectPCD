@@ -30,22 +30,21 @@ function color = colorValue(rubik)
     stats = regionprops(CC, 'centroid');
     pts = cat(1, stats.Centroid);
     
-    left2 = pts(1,:);
-    right2 = pts(1,:);
-    bottom2 = pts(1,:);
+    figure;imshow(cuttedC);hold on;
+    plot(pts(:,1),pts(:,2),'b*');
+    
+    leftMost = pts(1);
+    rightMost = pts(1);
+    bottomMost = pts(1);
     for i=2:size(pts, 1)
-        if left2(1) > pts(i,1)
-            left2 = pts(i,:);
+        if leftMost(1) > pts(i,1)
+            leftMost = pts(i);
         end
-        if right2(1) < pts(i,1)
-            right2 = pts(i,:);
+        if rightMost(1) < pts(i,1)
+            rightMost = pts(i);
         end
-        if bottom2(2) < pts(i,2)
-            bottom2 = pts(i,:);
+        if bottomMost(1) > pts(i,1)
+            bottomMost = pts(i);
         end
     end
-    
-    
-    figure;imshow(cuttedC);hold on;
-    plot(pts(:,1), pts(:,2), 'bo');
 end

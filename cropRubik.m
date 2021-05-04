@@ -36,7 +36,7 @@ function ff = cropRubik(img, resize)
     hsv(:,:,3) = hsv(:,:,3) > 0.3;
     for i=1:editSize(1)
         for j=1:editSize(2)
-            if (hsv(i,j,1) < 0.1 | hsv(i,j,1) > 0.9) & hsv(i,j,3) > 0.2
+            if (hsv(i,j,1) < 0.1 || hsv(i,j,1) > 0.9) && hsv(i,j,3) > 0.2
                 hsv(i,j,2) = 1;
                 hsv(i,j,3) = 1;
             end
@@ -53,19 +53,19 @@ function ff = cropRubik(img, resize)
     hsvErodedI = rgb2hsv(erodedI);
     for i=1:editSize(1)
         for j=1:editSize(2)
-            if orangeSelect(i,j) > 0.5 & hsvErodedI(i,j,3) > 0.1
+            if orangeSelect(i,j) > 0.5 && hsvErodedI(i,j,3) > 0.1
                 hsvErodedI(i,j,1) = 0.1;
             end
             if hsvErodedI(i,j,2) < 0.3
                 hsvErodedI(i,j,2) = 0;
-            elseif hsvErodedI(i,j,1) > 0.11 & hsvErodedI(i,j,1) < 0.7
+            elseif hsvErodedI(i,j,1) > 0.11 && hsvErodedI(i,j,1) < 0.7
                 hsvErodedI(i,j,2) = 1;
             end
         end
     end
     erodedI = hsv2rgb(hsvErodedI);
     
-    stl = strel('square', 8);
+    stl = strel('disk', 8);
     dilatedI = imdilate(erodedI, stl);
     
     ff = imresize(dilatedI, resize);
