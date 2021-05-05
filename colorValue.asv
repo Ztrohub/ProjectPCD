@@ -1,6 +1,12 @@
 function [imgLines, projectedImg, projectedColor, rebuildColor] = colorValue(rubik)
     editSize = [120, 120];
     
+    imgLines.x = false;
+    imgLines.y = false;
+    projectedImg = false;
+    projectedColor = false;
+    rebuildColor = false;
+    
     imgray = rgb2gray(rubik);
     BW = imbinarize(imgray, 0.01);
     [x, y] = size(BW);
@@ -369,29 +375,14 @@ function [imgLines, projectedImg, projectedColor, rebuildColor] = colorValue(rub
     projectedColor = [colorTop zeros([editSize, 3]);...
         colorLeft colorRight];
     
-    faceTop.x = [1 1; -1 -1];
-    faceTop.y = [1 -1; 1 -1];
-    faceTop.z = [1 1; 1 1];
+    faceTop.X = [1 1; -1 -1];
+    faceTop.Y = [1 -1; 1 -1];
+    faceTop.Z = [1 1; 1 1];
     faceTop.img = colorTop;
-    
-    faceLeft.x = [-1 1; -1 1];
-    faceLeft.y = [-1 -1; -1 -1];
-    faceLeft.z = [1 1; -1 -1];
-    faceLeft.img = colorRight;
-    
-    faceRight.x = [-1 -1; -1 -1];
-    faceRight.y = [1 -1; 1 -1];
-    faceRight.z = [1 1; -1 -1];
-    faceRight.img = colorLeft;
-    
-    rebuildColor.Top = faceTop;
-    rebuildColor.Left = faceLeft;
-    rebuildColor.Right = faceRight;
-    
     figure;
-    surf(faceTop.x, faceTop.y, faceTop.z, faceTop.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
-    surf(faceLeft.x, faceLeft.y, faceLeft.z, faceLeft.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
-    surf(faceRight.x, faceRight.y, faceRight.z, faceRight.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold off;
+    surf(faceTop.x,,, colorTop, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
+    surf([-1 1; -1 1],[-1 -1; -1 -1],[1 1; -1 -1], colorRight, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
+    surf([-1 -1; -1 -1],[1 -1; 1 -1],[1 1; -1 -1], colorLeft, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold off;
     xlim([-3 1]);
     ylim([-3 1]);
     zlim([-1 3]);

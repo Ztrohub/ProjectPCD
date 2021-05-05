@@ -61,12 +61,16 @@ function ff = cropRubik(img, resize)
                 hsvErodedI(i,j,2) = 0;
             elseif hsvErodedI(i,j,1) > 0.11 && hsvErodedI(i,j,1) < 0.7
                 hsvErodedI(i,j,2) = 1;
+                hsvErodedI(i,j,3) = 1;
+            end
+            if hsvErodedI(i,j,1) > 0.5 && hsvErodedI(i,j,1) < 0.7
+                hsvErodedI(i,j,1) = 0.55;
             end
         end
     end
     erodedI = hsv2rgb(hsvErodedI);
     
-    stl = strel('disk', 8);
+    stl = strel('disk', 9);
     dilatedI = imdilate(erodedI, stl);
     
     ff = imresize(dilatedI, resize);

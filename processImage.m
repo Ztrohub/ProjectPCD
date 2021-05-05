@@ -14,7 +14,7 @@ function processImage(dir, isOri, isIso, isFinal, panel)
     Children = get(panel,'children');
     h = (findobj(Children,'Type','axes'));
     if ~isempty(h)
-    for i=1:length(h),delete(h(i));end
+        for i=1:length(h),delete(h(i));end
     end
     panel.AutoResizeChildren = 'off';
 
