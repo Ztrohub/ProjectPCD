@@ -1,4 +1,4 @@
-function [imgLines, projectedImg, projectedColor, rebuildColor] = colorValue(rubik)
+function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = colorValue(rubik)
     editSize = [120, 120];
     
     imgray = rgb2gray(rubik);
@@ -13,6 +13,7 @@ function [imgLines, projectedImg, projectedColor, rebuildColor] = colorValue(rub
     patt = imread('pattern/patt4.jpg');
     c4 = normxcorr2(patt, BW);
     c = (c1 + c2 + c3 + c4) / 2;
+    corrValue = c;
 %     figure;surf(c);
 %     shading flat;
     
@@ -388,13 +389,13 @@ function [imgLines, projectedImg, projectedColor, rebuildColor] = colorValue(rub
     rebuildColor.Left = faceLeft;
     rebuildColor.Right = faceRight;
     
-    figure;
-    surf(faceTop.x, faceTop.y, faceTop.z, faceTop.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
-    surf(faceLeft.x, faceLeft.y, faceLeft.z, faceLeft.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
-    surf(faceRight.x, faceRight.y, faceRight.z, faceRight.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold off;
-    xlim([-3 1]);
-    ylim([-3 1]);
-    zlim([-1 3]);
+%     figure;
+%     surf(faceTop.x, faceTop.y, faceTop.z, faceTop.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
+%     surf(faceLeft.x, faceLeft.y, faceLeft.z, faceLeft.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;
+%     surf(faceRight.x, faceRight.y, faceRight.z, faceRight.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold off;
+%     xlim([-3 1]);
+%     ylim([-3 1]);
+%     zlim([-1 3]);
     
     %figure;imshow(projectedColor);
     %figure;imshow(projectedImg);
