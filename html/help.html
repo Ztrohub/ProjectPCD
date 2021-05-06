@@ -1,16 +1,119 @@
-<div style='margin:6%'>
-	<h1>Let's plot it</h1><br>
-	<b>first</b>, choose your rubik's image.‍<br>
-	<br>
-	<b>Second</b>, choose any option.<br>
-	 - <b>Isometric color</b>, it'll show color segmentation from your image and display it like your original image.<br>
-	 - <b>Image lines</b>, it'll show lines of image. The lines usefull for side-by-side segmentation<br>
-	 - <b>Pattern correlation value</b>, it'll show surface value of the image that correlate againts some features.<br>
-	 - <b>Projected image</b>, it'll show each side of cube that already projected into cube nets.<br>
-	 - <b>Projected color</b>, it'll show recognize color on each side of a cube and form a cube nets.<br>
-	 - <b>3D plot</b>, it''ll show scatter plot of recognize color in 3D plot.‍<br>
-	<br>
-	<b>Third</b>, press button "<b>process</b>".<br><br>
-	<br>
-	*if you need to compare several result, please use "<b>compare</b>" features below.
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width810, initial-scale=1">
+    <title>Let's Plot It!</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,500,700|Fira+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css">
+	<script src="https://unpkg.com/animejs@2.2.0/anime.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <link rel="stylesheet" href="dist/fa/css/font-awesome.min.css">
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <main>
+            <section class="features section">
+                <div class="container">
+                    <div class="features-inner section-inner">
+                        <div class="features-header text-center">
+                            <div class="container-sm">
+                                <h2 class="section-title mt-0">Let's Plot It ! <i class="fa fa-cubes  fa-10x" aria-hidden="true"></i></h2>
+                                <p class="section-paragraph">First, insert your Rubik's Cube image by pressing the <b>Choose file</b><br> 
+									Then select any options you want to use by checking the boxes.<br><br>
+									Don't forget to press the <b>Process</b> button.<br> 
+									You may use <b> Compare </b> feature below to show some results.</p>
+                            </div>
+                        </div>
+						<div class="features-wrap">
+							<div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon" style="background:#FFD2DA;">
+										    <g fill="none" fill-rule="nonzero">
+                                                <div style="font-size: 50px; padding-top: 20px; color: #FF97AA;">
+                                                    <i class="fa fa-picture-o  fa-10x" aria-hidden="true"></i>
+                                                </div>
+										    </g>
+                                    </div>
+                                    <h4 class="feature-title h3-mobile mb-8">Isometric Color</h4>
+                                    <p class="text-sm">Show color segmentation from your Rubik's Cube image and display it like your original image</p>
+                                </div>
+                            </div>
+							<div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon" style="background:#FFD8CD;">
+										<g fill="none" fill-rule="nonzero">
+                                            <div style="font-size: 50px; padding-top: 20px; color: #FF97AA;">
+                                                <i class="fa fa-arrows fa-10x" aria-hidden="true"></i>
+                                            </div>
+                                        </g>
+                                    </div>
+                                    <h4 class="feature-title h3-mobile mb-8">Image Lines</h4>
+                                    <p class="text-sm">Show lines of image. The lines are usefull for side-by-side segmentation.</p>
+                                </div>
+                            </div>
+							<div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon" style="background:#C6FDF3;">
+                                        <!-- #1ADAB7 -->
+										<g fill="none" fill-rule="nonzero">
+                                            <div style="font-size: 50px; padding-top: 20px; color: #1ADAB7;">
+                                                <i class="fa fa-link fa-10x" aria-hidden="true"></i>
+                                            </div>
+                                        </g>
+                                    </div>
+                                    <h4 class="feature-title h3-mobile mb-8">Pattern Correlation Value</h4>
+                                    <p class="text-sm">Show surface value of the image that correlate against some features.</p>
+                                </div>
+                            </div>
+							<div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon" style="background:#E0E1FE;">
+                                        <!-- #4950F6 -->
+										<g fill="none" fill-rule="nonzero">
+                                            <div style="font-size: 50px; padding-top: 20px; color: #4950F6;">
+                                                <i class="fa fa-file-image-o fa-10x" aria-hidden="true"></i>
+                                            </div>
+                                        </g>
+                                    </div>
+                                    <h4 class="feature-title h3-mobile mb-8">Projected Image</h4>
+                                    <p class="text-sm">Show each side of the Rubik's Cube that already projected into a cube's nets.</p>
+                                </div>
+                            </div>
+							<div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon" style="background:#FFD2DA;">
+										<g fill="none" fill-rule="nonzero">
+                                            <div style="font-size: 50px; padding-top: 20px; color: #FF97AA;">
+                                                <i class="fa fa-desktop  fa-10x" aria-hidden="true"></i>
+                                            </div>
+                                        </g>
+                                    </div>
+                                    <h4 class="feature-title h3-mobile mb-8">Projected Color</h4>
+                                    <p class="text-sm">Show recognition color on each side side of the Rubik's Cube and from the cube's nets.</p>
+                                </div>
+                            </div>
+							<div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon" style="background:#FFD8CD;">
+										<g fill="none" fill-rule="nonzero">
+                                            <div style="font-size: 50px; padding-top: 20px; color: #FF97AA;">
+                                                <i class="fa fa-cube fa-10x" aria-hidden="true"></i>
+                                            </div>
+                                        </g>
+                                    </div>
+                                    <h4 class="feature-title h3-mobile mb-8">3D Plot </h4>
+                                    <p class="text-sm">Show scatter plot of recognition color in 3D Plot.</p>
+                                </div>
+                            </div>
+						</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dist/js/main.min.js"></script>
+</body>
+</html>
