@@ -23,9 +23,9 @@ Run app.mlapp to start using the application.
     <td> <img width="200px" height="200px" src="https://i.ibb.co/F648GP8/message-Image-1620286925188.jpg" /> </td>
   </tr>
   <tr>
-    <td> Isometric Color </td>
-    <td> Image lines </td>
-    <td> Pattern Correlation Value </td>
+    <td align="center"> Isometric Color </td>
+    <td align="center"> Image lines </td>
+    <td align="center"> Pattern Correlation Value </td>
   </tr>
   
   <tr>
@@ -37,9 +37,9 @@ Run app.mlapp to start using the application.
     <td> <img width="200px" height="200px" src="https://i.ibb.co/gr2K5V9/message-Image-1620286988436.jpg" /> </td> 
   </tr>
   <tr>
-    <td> Projected Image </td>
-    <td> Projected Color </td>
-    <td> 3D Plot </td>
+    <td align="center"> Projected Image </td>
+    <td align="center"> Projected Color </td>
+    <td align="center"> 3D Plot </td>
   </tr>
 </table>
 
