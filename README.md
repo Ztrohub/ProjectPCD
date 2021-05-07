@@ -7,28 +7,43 @@ This is a matlab program that can process isometric rubik image to provide each 
 You need MATLAB R2020 or higher to use the GUI. <br>
 Run app.mlapp to start using the application.
 
-## Feature
+## Input Image Example
+<p align="center">
+<img width="200px" height="200px" src="https://i.ibb.co/m8vtqG7/message-Image-1620286696552.jpg" />
+  </p>
 
-### Input Image Example
-<image width="200px" height="200px" src="https://i.ibb.co/m8vtqG7/message-Image-1620286696552.jpg" />
-
-### Isometric Color
-<image width="200px" height="200px" src="https://i.ibb.co/gTmXBNS/message-Image-1620286891055.jpg" />
+## Features
+<table align="center">
+  <tr>
+<!--       isometric color -->
+    <td> <img width="200px" height="200px" src="https://i.ibb.co/gTmXBNS/message-Image-1620286891055.jpg" /> </td>
+<!--       Image lines -->
+    <td> <img width="200px" height="200px" src="https://i.ibb.co/zHXDvdh/message-Image-1620287494003.jpg" /> </td>
+<!--       Pattern correlation value -->
+    <td> <img width="200px" height="200px" src="https://i.ibb.co/F648GP8/message-Image-1620286925188.jpg" /> </td>
+  </tr>
+  <tr>
+    <td> Isometric Color </td>
+    <td> Image lines </td>
+    <td> Pattern Correlation Value </td>
+  </tr>
   
-### Image lines
-<img width="200px" height="200px" src="https://i.ibb.co/zHXDvdh/message-Image-1620287494003.jpg" />
+  <tr>
+<!--       Projected image -->
+    <td> <img width="200px" height="200px" src="https://i.ibb.co/Tw0t7f3/message-Image-1620286962645.jpg" /> </td>
+<!--       Projected color -->
+    <td> <img width="200px" height="200px" src="https://i.ibb.co/d79GG29/message-Image-1620286971776.jpg" /> </td> 
+<!--       3D Plot -->
+    <td> <img width="200px" height="200px" src="https://i.ibb.co/gr2K5V9/message-Image-1620286988436.jpg" /> </td> 
+  </tr>
+  <tr>
+    <td> Projected Image </td>
+    <td> Projected Color </td>
+    <td> 3D Plot </td>
+  </tr>
+</table>
 
-### Pattern correlation value
-<img width="200px" height="200px" src="https://i.ibb.co/F648GP8/message-Image-1620286925188.jpg" />
-
-### Projected image
-<img width="200px" height="200px" src="https://i.ibb.co/Tw0t7f3/message-Image-1620286962645.jpg" />
-
-### Projected color
-<img width="200px" height="200px" src="https://i.ibb.co/d79GG29/message-Image-1620286971776.jpg" />
-
-### 3D Plot
-<img width="200px" height="200px" src="https://i.ibb.co/gr2K5V9/message-Image-1620286988436.jpg" />
+<br> <br>
 
 ## Contributor
 <table>
