@@ -30,7 +30,7 @@ Run app.mlapp to start using the application.
 ### 3D Plot
 <img width="200px" height="200px" src="https://i.ibb.co/gr2K5V9/message-Image-1620286988436.jpg" />
 
-## Contribution
+## Contributor
 <table>
   <tr>
     <td align="center"><a href="https://github.com/MaclaurinSeries"><img src="https://avatars.githubusercontent.com/u/63801107?v=4" width="100px;" alt=""/><br /><sub><b>Christian Budhi Sabdana</b></sub></a></td>
