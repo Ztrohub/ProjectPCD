@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="1958599383" file="E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD\test.prj" location="E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD" name="test" preferred-package-location="E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD\test\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="3213388623" file="E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD\test.prj" location="E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD" name="test" preferred-package-location="E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD\test\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>test</param.appname>
     <param.icon />
     <param.icons />
@@ -11,10 +11,10 @@
     <param.description>test</param.description>
     <param.screenshot />
     <param.guid />
-    <param.installpath.string>\test\test\</param.installpath.string>
+    <param.installpath.string>\programBRUH</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
     <param.logo />
-    <param.install.notes />
+    <param.install.notes>BRUH</param.install.notes>
     <param.target.install.notes />
     <param.intermediate>${PROJECT_ROOT}\test\for_testing</param.intermediate>
     <param.files.only>${PROJECT_ROOT}\test\for_redistribution_files_only</param.files.only>
@@ -48,10 +48,8 @@
       <param.version />
       <param.screenshot />
       <param.guid />
-      <param.installpath.string />
       <param.installpath.combo />
       <param.logo />
-      <param.install.notes />
       <param.target.install.notes />
       <param.intermediate />
       <param.files.only />
@@ -79,7 +77,11 @@
     </fileset.main>
     <fileset.resources />
     <fileset.package />
-    <fileset.depfun />
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\colorValue.m</file>
+      <file>${PROJECT_ROOT}\cropRubik.m</file>
+      <file>${PROJECT_ROOT}\processImage.m</file>
+    </fileset.depfun>
     <build-deliverables>
       <file location="${PROJECT_ROOT}\test\for_testing" name="splash.png" optional="false">E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD\test\for_testing\splash.png</file>
       <file location="${PROJECT_ROOT}\test\for_testing" name="test.exe" optional="false">E:\DATA\CHRISTIAN\KULIAH\PCD\project\ProjectPCD\test\for_testing\test.exe</file>
@@ -94,8 +96,8 @@
         <toolbox name="gpucoder" />
         <toolbox name="fixedpoint" />
         <toolbox name="matlabhdlcoder" />
-        <toolbox name="polyspacebugfinder" />
         <toolbox name="neuralnetwork" />
+        <toolbox name="polyspacebugfinder" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
@@ -123,14 +125,14 @@
         </matlabhdlcoder>
       </toolbox>
       <toolbox>
-        <polyspacebugfinder>
-          <enabled>true</enabled>
-        </polyspacebugfinder>
-      </toolbox>
-      <toolbox>
         <neuralnetwork>
           <enabled>true</enabled>
         </neuralnetwork>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
       </toolbox>
     </matlab>
     <platform>

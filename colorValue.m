@@ -1,6 +1,7 @@
 function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = colorValue(rubik)
     editSize = [120, 120];
     
+%     figure;imshow(rubik);
     imgray = rgb2gray(rubik);
     BW = imbinarize(imgray, 0.01);
     [x, y] = size(BW);
@@ -13,9 +14,13 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
     patt = imread('pattern/patt4.jpg');
     c4 = normxcorr2(patt, BW);
     c = (c1 + c2 + c3 + c4) / 2;
-    corrValue = c;
-%     figure;surf(c);
-%     shading flat;
+    corrValue.C = c;
+    corrValue.C1 = c1;
+    corrValue.C2 = c2;
+    corrValue.C3 = c3;
+    corrValue.C4 = c4;
+    figure;surf(c); %---------------------------------------------------------------------------
+    shading flat;
     
     flattenedC = reshape(c.',1,[]);
     %get 0.4% percentile from maximum values
@@ -27,6 +32,7 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
             cuttedC(i,j) = c(size(patt,1)/2 + i,size(patt,2)/2 + j) > lim;
         end
     end
+%     figure;imshow(cuttedC);
     
     stl = strel('disk', 8);
     cuttedC = imdilate(cuttedC, stl);
@@ -125,8 +131,18 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
         RBcor(2) bottom3(2) LBcor(2) left3(2) LBcor(2) bottom3(2)];
     imgLines.x = linesX;
     imgLines.y = linesY;
-%     figure;imshow(rubik);hold on;
-%     plot(imgLines.x, imgLines.y, 'bo');
+%     figure;imshow(rubik);hold on; %----------------------------------------------------------------------------------
+%     plot(imgLines.x, imgLines.y, 'bo',...
+%         'LineWidth',4,...
+%         'MarkerSize',20,...
+%         'MarkerEdgeColor','b',...
+%         'MarkerFaceColor',[0.5,0.5,0.5]);
+%     line(imgLines.x, imgLines.y,...
+%         'LineWidth',4,...
+%         'MarkerSize',20,...
+%         'MarkerEdgeColor','b',...
+%         'MarkerFaceColor',[0.5,0.5,0.5]);
+%     hold off;
     
     %mask side by side
     maskTop = zeros([x, y]);
@@ -152,6 +168,8 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
     Left = rubik .* repmat(maskLeft, [1,1,3]);
     Right = rubik .* repmat(maskRight, [1,1,3]);
     
+%     figure;imshow(Top);
+    
     %image projection
     %left
     mattL1 = [
@@ -162,7 +180,7 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
         1 x x 1;
         y y 1 1
         ];
-    tform = maketform('projective', mattL1', mattL2');
+    tform = maketform('projective', mattL1', mattL2')
     tform = projective2d(tform.tdata.T);
     Left = imwarp(Left, tform, 'nearest');
     LeftGray = rgb2gray(Left);
@@ -171,6 +189,7 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
     bound = regionprops(allEl, 'BoundingBox');
     Left = imcrop(Left, bound(1).BoundingBox);
     Left = imresize(Left, [x y]);
+      figure;imshow(Left);
     
     %small projection correction
     LeftGray = rgb2hsv(Left);
@@ -206,6 +225,8 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
     bound = regionprops(allEl, 'BoundingBox');
     Left = imcrop(Left, bound(1).BoundingBox);
     Left = imresize(Left, [x y]);
+    
+    figure;imshow(Left);
     
     %right
     mattR1 = [
@@ -388,6 +409,10 @@ function [imgLines, corrValue, projectedImg, projectedColor, rebuildColor] = col
     rebuildColor.Top = faceTop;
     rebuildColor.Left = faceLeft;
     rebuildColor.Right = faceRight;
+    
+%     figure;imshow(imgLines); % --------------------------------------------------------------
+%     figure;imshow(projectedImg); % --------------------------------------------------------------
+%     figure;imshow(projectedColor); % --------------------------------------------------------------
     
 %     figure;
 %     surf(faceTop.x, faceTop.y, faceTop.z, faceTop.img, 'facecolor', 'texturemap', 'edgecolor', 'none', 'FaceAlpha',0.8);hold on;

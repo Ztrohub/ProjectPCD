@@ -2,11 +2,13 @@ function ff = cropRubik(img, resize)
     editSize = [512 512];
     
     img = im2double(img);
+%     figure;imshow(img); % ---------------------------------------------------------------------------
     
     hsv = rgb2hsv(img);
     imgray = abs(hsv(:,:,2) - hsv(:,:,3));
     lvl = graythresh(imgray);
     imr = imbinarize(imgray, lvl);
+    
     stl = strel('disk', 30);
     imr = imerode(imr, stl);
     imr = imdilate(imr, stl);
@@ -24,11 +26,12 @@ function ff = cropRubik(img, resize)
     imcr = img.*repmat(imf, [1,1,3]);
     imcr = imcrop(imcr, cdat(1).BoundingBox);
     imcr = imresize(imcr, editSize);
-    %figure;imshow(imcr);
     
+%     figure;imshow(imcr);
     hsv = rgb2hsv(imcr);
     orangeSelect = hsv(:,:,1) > 0.01 & hsv(:,:,1) < 0.1 & hsv(:,:,2) > 0.4 & hsv(:,:,3) > 0.4;
     orangeSelect = medfilt2(orangeSelect, [10 10]);
+%      figure;imshow(orangeSelect);
     
     hsv = rgb2hsv(imcr);
     hsv(hsv < 0) = 0;
@@ -47,10 +50,12 @@ function ff = cropRubik(img, resize)
     
     [imnd, map] = rgb2ind(imcr,7,'nodither');
     imnd = ind2rgb(imnd, map);
+%     figure;imshow(imnd);
     
     stl = strel('disk', 8);
     erodedI = imerode(imnd, stl);
-    
+%     figure;imshow(erodedI);
+%     
     hsvErodedI = rgb2hsv(erodedI);
     for i=1:editSize(1)
         for j=1:editSize(2)
@@ -74,4 +79,5 @@ function ff = cropRubik(img, resize)
     dilatedI = imdilate(erodedI, stl);
     
     ff = imresize(dilatedI, resize);
+%     figure;imshow(ff); % ------------------------------------------------------------------------
 end
